@@ -1,0 +1,46 @@
+body{
+ height: 100vh;
+ color: black;
+}
+/* Style the navbar */
+nav {
+    font-family: "poppins";
+    background-color: #1b1b2e;
+    overflow: hidden;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+nav a {
+    float: left;
+    display: block;
+    color: #a1a9b5;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: white;
+    color: black;
+}
+
+nav div {
+    float: right;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}

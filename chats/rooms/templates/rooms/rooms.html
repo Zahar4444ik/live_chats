@@ -1,0 +1,71 @@
+{% extends 'main/base.html' %}
+
+{% load humanize %}
+
+{% block links %}
+<style>
+        .chat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .chat-info {
+            flex-grow: 1;
+        }
+
+        .chat-name {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .chat-message {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .join-btn {
+            padding: 5px 10px;
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .join-btn:hover {
+            background-color: #0056b3;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Group Chats</h2>
+    <div class="chat-list">
+        <!-- Repeat this block for each group chat -->
+        {% for room in rooms %}
+        <div class="chat-item">
+            <div class="chat-info">
+                <div class="chat-name">{{ room.name }}</div>
+                {% if room.last_message %}
+                <div class="chat-message">Last message: <span class="text-muted">{{ room.last_message.content }} - {{ room.last_message.user.username }}, {{ room.last_message.date_added | naturaltime}}</span></div>
+                {% else %}
+                <div class="chat-message"><span class="text-muted">No messages yet</span></div>
+                {% endif %}
+            </div>
+            <a href="{% url 'room' room.slug %}" class="join-btn">Join Chat</a>
+        </div>
+        {% endfor %}
+        <!-- End of chat item block -->
+    </div>
+</div>
+
+{% endblock %}
